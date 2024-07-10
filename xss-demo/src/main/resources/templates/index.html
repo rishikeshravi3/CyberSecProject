@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>XSS Demo</title>
+</head>
+<body>
+	<h1>Reflected XSS Demo</h1>
+	<form action="/greet" method="get">
+		<label for="name">Enter your name:</label> <input type="text"
+			id="name" name="name" value="<script>alert('XSS Attack!')</script>">
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>
