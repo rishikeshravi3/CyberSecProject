@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Greeting</title>
+    <title>XSS Demo - Greeting</title>
 </head>
 <body>
-    <h1>Greeting</h1>
-    <p th:utext="'Hello, ' + ${name} + '!'">Hello, World!</p>
+    <h1>Hello, <span th:utext="${name}"></span>!</h1>
+    <div id="sensitiveInfo">
+        <h2>Sensitive Information</h2>
+        <p>Username: admin</p>
+        <p>Password: supersecret123</p>
+    </div>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        function logout() {
+            alert("Logged out successfully!");
+        }
+    </script>
 </body>
 </html>
