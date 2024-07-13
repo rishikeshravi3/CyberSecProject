@@ -253,13 +253,15 @@
 <body>
     <nav class="navbar">
     <a href="#" class="navbar-brand">SocialSphere</a>
-    <div class="navbar-search-container">
-        <div class="navbar-search">
-            <i class="fas fa-search" style="color: #ffffff;"></i>
-            <input type="text" placeholder="Search SocialSphere">
-        </div>
-        <button class="search-button">Search</button>
-    </div>
+    <form action="/search" method="get">
+	     <div class="navbar-search-container">
+	        <div class="navbar-search">
+	            <i class="fas fa-search" style="color: #ffffff;"></i>
+	            <input type="text" id="query" name="query" placeholder="Search SocialSphere">
+	        </div>
+	        <button type="submit" class="search-button">Search</button>
+	    </div>
+    </form>
     <div class="navbar-icons">
         <div class="icon-btn"><i class="fas fa-envelope"></i></div>
         <div class="icon-btn"><i class="fas fa-bell"></i></div>

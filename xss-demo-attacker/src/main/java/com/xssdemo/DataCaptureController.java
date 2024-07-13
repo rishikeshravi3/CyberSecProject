@@ -1,5 +1,6 @@
-package com.example.xssdemo;
+package com.xssdemo;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class DataCaptureController {
 
