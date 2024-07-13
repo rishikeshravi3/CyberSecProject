@@ -13,4 +13,14 @@ public class XssController {
         model.addAttribute("name", name);
         return "greet";
     }
+    
+    @Controller
+    public class ProfileController {
+        @GetMapping("/dashboard")
+        public String dashboard(@RequestParam String name, Model model) {
+            model.addAttribute("name", name);
+            return "dashboard";
+        }
+    }
+
 }
