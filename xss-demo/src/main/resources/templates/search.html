@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SocialSphere - Search</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #1877f2;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .search-box {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-box input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .profile-card h2 {
+            margin-top: 0;
+            color: #1877f2;
+        }
+        .sensitive-info {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SocialSphere</h1>
+    </div>
+    <div class="container">
+        <div class="search-box">
+            <form action="/search" method="get">
+                <input type="text" id="query" name="query" placeholder="Search for friends...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div id="results">
+            <h2>Search Results for: <span th:utext="${query}"></span></h2>
+            <div class="profile-card">
+                <h2>John Doe</h2>
+                <p>Location: New York, USA</p>
+                <p>Mutual Friends: 5</p>
+            </div>
+            <div class="profile-card">
+                <h2>Jane Smith</h2>
+                <p>Location: London, UK</p>
+                <p>Mutual Friends: 3</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Simulating some client-side data that could be valuable to an attacker
+        const userSession = {
+            id: "user123",
+            token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+            lastLogin: "2023-07-13T10:30:00Z"
+        };
+        const privateMessages = [
+            { from: "Alice", content: "Hey, let's meet at 5 PM." },
+            { from: "Bob", content: "Don't forget about the surprise party!" }
+        ];
+    </script>
+</body>
+</html>
