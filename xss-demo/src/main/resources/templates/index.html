@@ -126,7 +126,7 @@
     <script>
         document.getElementById('unsecureLogin').addEventListener('click', function() {
             // Action for unsecure login
-            document.getElementById('loginForm').action = "dashboardUnsecure";
+            document.getElementById('loginForm').action = "/dashboardUnsecure";
             document.getElementById('loginForm').method = "GET"; // Ensure the method is set to GET
             document.getElementById('loginForm').submit();
         });
