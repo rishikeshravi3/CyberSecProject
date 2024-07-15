@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProfileController {
-	@GetMapping("/dashboard")
-	public String dashboard(@RequestParam String name, Model model) {
+	@GetMapping("/dashboardSecure")
+	public String dashboardSecure(@RequestParam String name, Model model) {
 		model.addAttribute("name", name);
-		return "dashboard";
+		return "dashboardSecure";
+	}
+	@GetMapping("/dashboardUnsecure")
+	public String dashboardUnsecure(@RequestParam String name, Model model) {
+		model.addAttribute("name", name);
+		return "dashboardUnsecure";
 	}
 }
