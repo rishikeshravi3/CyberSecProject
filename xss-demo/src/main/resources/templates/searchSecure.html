@@ -4,6 +4,7 @@
     <title>SocialSphere - Search</title>
     <link rel="stylesheet" th:href="@{/css/search.css}"/>
     <link rel="stylesheet" th:href="@{/css/chat.css}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
@@ -12,12 +13,35 @@
     <div class="container">
         <div class="search-box">
             <form action="/searchSecure" method="get">
-                <input type="text" id="query" name="query" placeholder="Search for friends...">
+                <input type="text" id="query" name="query" th:value="${originalQuery}" placeholder="Search for friends...">
+                <select name="countermeasure" id="countermeasure" class="countermeasure-select">
+                    <option value="sanitization">Input Sanitization</option>
+                    <option value="encoding">Output Encoding</option>
+                    <option value="csp">Content Security Policy</option>
+                </select>
                 <button type="submit">Search</button>
             </form>
         </div>
         <div id="results">
-            <h2>Search Results for: <span th:text="${query}"></span></h2>
+            <h2>Search Results for: <span th:text="${originalQuery}"></span></h2>
+            <p th:if="${countermeasure != 'none'}">Protected Query: <span th:text="${sanitizedQuery}"></span></p>
+            
+            <div class="countermeasure-info">
+                <h3>Countermeasure Demonstrated:</h3>
+                <p th:if="${countermeasure == 'sanitization'}">Input Sanitization: Removed potentially harmful HTML</p>
+                <p th:if="${countermeasure == 'encoding'}">Output Encoding: Using th:text to prevent XSS</p>
+                <p th:if="${countermeasure == 'csp'}">Content Security Policy: Restricting resource origins</p>
+            </div>
+            
+            <!-- CSP Demonstration -->
+            <div th:if="${countermeasure == 'csp'}" class="csp-demo">
+                <h4>CSP Demonstration:</h4>
+                <p>The following script should be blocked by CSP:</p>
+                <pre><code th:text="${attackerScript}"></code></pre>
+                <p class="csp-note">Check the browser console for CSP violation messages.</p>
+            </div>
+
+            <!-- Rest of the content remains unchanged -->
             <div class="profile-card">
                 <h2>John Doe</h2>
                 <p>Location: New York, USA</p>
@@ -31,7 +55,7 @@
         </div>
     </div>
     
-   	<button id="openChat">💬</button>
+    <button id="openChat">💬</button>
 
     <div id="chatPopup">
         <div id="chatHeader">
@@ -45,7 +69,9 @@
         </div>
     </div>
 
-   	<script th:src="@{/js/chat.js}"></script>
-
+    <script th:src="@{/js/chat.js}"></script>
+    
+    <!-- Attacker's script (will be blocked by CSP when enabled) -->
+    <script th:if="${countermeasure == 'csp'}" th:utext="${attackerScript}"></script>
 </body>
 </html>

@@ -75,3 +75,43 @@ body {
 #chatInput button:hover {
 	background-color: #166fe5;
 }
+
+/* Add these styles to your existing CSS */
+
+.countermeasure-select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.countermeasure-info {
+    background-color: #e6f3ff;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.csp-demo {
+    background-color: #fff3e6;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.csp-demo pre {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.csp-note {
+    font-style: italic;
+    color: #666;
+    margin-top: 0.5rem;
+}
